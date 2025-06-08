@@ -28,10 +28,7 @@ public class Registration {
            if(uemail.equals(email.get(i)) && (upass.equals(password.get(i)))){
                JOptionPane.showMessageDialog(null, "Welcome\n" + name.get(i));
                break;
-           } else {
-               JOptionPane.showMessageDialog(null, "Please Enter your Correct Credentials\nIf you still can't Login Please make sure that you have an account");
-           }
-           
+           }         
        }
    }
 }
