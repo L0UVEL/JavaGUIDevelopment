@@ -211,7 +211,7 @@ public class Register extends javax.swing.JFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-        String name = txtName.getName();
+        String name = txtName.getText();
         String email = txtEmail.getText();
         String password = txtPass.getText();
         String confirmPass = txtConfirmPass.getText();
