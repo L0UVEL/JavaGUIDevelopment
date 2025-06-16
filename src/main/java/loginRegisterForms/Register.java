@@ -219,6 +219,12 @@ public class Register extends javax.swing.JFrame {
         
         if (!password.equals(confirmPass)) {
             JOptionPane.showMessageDialog(rootPane, "Both Password must be the same");
+        } else if(name.isEmpty() || email.isEmpty() || password.isEmpty()){
+            JOptionPane.showMessageDialog(rootPane, "Please Fill in All Fields");
+        }else if(password.length() < 8){
+            JOptionPane.showMessageDialog(rootPane, "Password should be at least 8 characters");
+        }else if(!email.endsWith(".com")){
+            JOptionPane.showMessageDialog(rootPane, "Please Make sure that You use an Email");
         } else {
             JOptionPane.showMessageDialog(rootPane, "Registered Successfully");
             Registration.registerUser(name,email,password);
