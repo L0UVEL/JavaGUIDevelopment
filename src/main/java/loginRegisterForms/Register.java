@@ -223,12 +223,10 @@ public class Register extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Please Fill in All Fields");
         }else if(password.length() < 8){
             JOptionPane.showMessageDialog(rootPane, "Password should be at least 8 characters");
-        }else if(!email.endsWith(".com")){
-            JOptionPane.showMessageDialog(rootPane, "Please Make sure that You use an Email");
+        }else if(!email.endsWith("@gmail.com") && !email.endsWith("@outlook.com")){
+            JOptionPane.showMessageDialog(rootPane, "Please Make sure that You use a Gmail or Outlook");
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Registered Successfully");
             Registration.registerUser(name,email,password);
-            System.out.println("Registered: " + name + ", " + email + ", " + password);
         }
         
     }//GEN-LAST:event_btnRegisterActionPerformed
