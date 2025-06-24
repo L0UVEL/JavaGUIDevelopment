@@ -3,18 +3,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package orderManagementForms;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Louvel
  */
 public class orderForm extends javax.swing.JFrame {
-
+    
+ 
     /**
      * Creates new form orderForm
      */
+    DefaultListModel<String> orders = new DefaultListModel<>();
+    ArrayList<Double> priceList = new ArrayList<>();
+    
     public orderForm() {
         initComponents();
+        orderList.setModel(orders);
     }
 
     /**
@@ -35,10 +43,11 @@ public class orderForm extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtPName = new javax.swing.JTextField();
         txtPPrice = new javax.swing.JTextField();
-        btnCompute = new javax.swing.JButton();
+        btnSubmit = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblResult = new javax.swing.JLabel();
+        btnCompute1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -109,15 +118,15 @@ public class orderForm extends javax.swing.JFrame {
             }
         });
 
-        btnCompute.setBackground(new java.awt.Color(255, 255, 51));
-        btnCompute.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        btnCompute.setForeground(new java.awt.Color(153, 0, 0));
-        btnCompute.setText("COMPUTE");
-        btnCompute.setBorderPainted(false);
-        btnCompute.setFocusPainted(false);
-        btnCompute.addActionListener(new java.awt.event.ActionListener() {
+        btnSubmit.setBackground(new java.awt.Color(255, 255, 51));
+        btnSubmit.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        btnSubmit.setForeground(new java.awt.Color(153, 0, 0));
+        btnSubmit.setText("SUBMIT");
+        btnSubmit.setBorderPainted(false);
+        btnSubmit.setFocusPainted(false);
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnComputeActionPerformed(evt);
+                btnSubmitActionPerformed(evt);
             }
         });
 
@@ -156,15 +165,27 @@ public class orderForm extends javax.swing.JFrame {
                 .addGap(0, 38, Short.MAX_VALUE))
         );
 
+        btnCompute1.setBackground(new java.awt.Color(255, 255, 51));
+        btnCompute1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        btnCompute1.setForeground(new java.awt.Color(153, 0, 0));
+        btnCompute1.setText("COMPUTE");
+        btnCompute1.setBorderPainted(false);
+        btnCompute1.setFocusPainted(false);
+        btnCompute1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCompute1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
@@ -173,16 +194,19 @@ public class orderForm extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtPPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCompute)
-                        .addGap(100, 100, 100)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
+                                .addComponent(txtPPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnSubmit)
+                                .addGap(81, 81, 81)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnCompute1)
+                        .addGap(42, 42, 42)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,13 +223,19 @@ public class orderForm extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(txtPPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(btnCompute, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCompute1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         pack();
@@ -219,14 +249,39 @@ public class orderForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPPriceActionPerformed
 
-    private void btnComputeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputeActionPerformed
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnComputeActionPerformed
+        String productName = txtPName.getText();
+        String productPrice = txtPPrice.getText();
+        
+        if(productName.isEmpty() || productPrice.isEmpty()){
+            JOptionPane.showConfirmDialog(this, "Please enter both product and price");
+            return;
+        }
+        try{
+            double price = Double.parseDouble(productPrice);
+            orders.addElement(productName + " - $" + productPrice);
+            priceList.add(price);
+            txtPName.setText("");
+            txtPPrice.setText("");
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Invalid Price Input");
+        }
+    }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void lblExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitMouseClicked
         // TODO add your handling code here:
-        this.setVisible(false);
+        System.exit(0);
     }//GEN-LAST:event_lblExitMouseClicked
+
+    private void btnCompute1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompute1ActionPerformed
+        // TODO add your handling code here:
+        double total = 0;
+        for (double price : priceList){
+            total += price;
+        }
+        lblResult.setText("$" + total);
+    }//GEN-LAST:event_btnCompute1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,7 +319,8 @@ public class orderForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCompute;
+    private javax.swing.JButton btnCompute1;
+    private javax.swing.JButton btnSubmit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
